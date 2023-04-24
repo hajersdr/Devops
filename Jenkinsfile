@@ -22,7 +22,7 @@ pipeline {
         }
         // stage('Run unit tests (Maven)') {
         //     steps {
-        //         sh 'mvn test -Dtest=StockServiceTest'
+        //         sh 'mvn test'
         //     }
         // }
         stage('Run code quality test (SonarQube)') {
