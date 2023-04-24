@@ -33,11 +33,11 @@ pipeline {
   -Dsonar.login=d4c0345a2b10a2ac248eebe74ba0a03bdcabc87b"
             }
         }
-        stage('Package and deploy to Nexus') {
-            steps {
-                sh "mvn clean package -DskipTests deploy:deploy-file -DgroupId=tn.esprit -DartifactId=ExamThourayaS2 -Dversion=1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://192.168.33.10:8081/repository/maven-releases/ -Dfile=target/ExamThourayaS2-1.0.jar"
-            }
-        }
+        // stage('Package and deploy to Nexus') {
+        //     steps {
+        //         sh "mvn clean package -DskipTests deploy:deploy-file -DgroupId=tn.esprit -DartifactId=ExamThourayaS2 -Dversion=1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://192.168.33.10:8081/repository/maven-releases/ -Dfile=target/ExamThourayaS2-1.0.jar"
+        //     }
+        // }
         stage('Push image to DockerHub (Docker)') {
             steps {
                 script {
