@@ -48,18 +48,18 @@ pipeline {
         stage('Push image to DockerHub (Docker)') {
             steps {
                 script {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    dockerImage = docker.build registry
                     docker.withRegistry('', registryCredential) {
                         dockerImage.push()
                     }
                 }
             }
         }
-        stage('Remove Unused docker image') {
-            steps {
-                sh "docker rmi $registry"
-            }
-        }
+        // stage('Remove Unused docker image') {
+        //     steps {
+        //         sh "docker rmi $registry"
+        //     }
+        // }
         stage('Run Spring app and MySQL images (Docker-compose)') {
             steps {
                 sh 'docker-compose -f spring-mysql/docker-compose.yml down --remove-orphans'
